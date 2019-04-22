@@ -12,12 +12,12 @@ const events = [
     { "id": 3, "name": "defaultEvent3" }
 ];
 
-app.engine('handlebars', exphbs({ defaultLayout: "main" }));
-app.set('view engine', 'handlebars')
+app.engine('.hbs', exphbs({ defaultLayout: "main", extname: '.hbs' }));
+app.set('view engine', '.hbs')
 
 // Routes
 app.get('/', (req, res) => {
-    res.render("home");
+    res.render('home');
 });
 
 app.get('/about', (req, res) => {

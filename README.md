@@ -3,5 +3,5 @@
 install prerequisites: node
 git clone https://www.github.com/dunwiddie/repo
 npm install
-node index.js or nodemon index.js
+npm start
 localhost:3000
