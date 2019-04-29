@@ -1,0 +1,39 @@
+body {
+    font-family: sans-serif;
+}
+
+header {
+    width: 100%;
+    background-color: rebeccapurple;
+    color: white;
+}
+
+nav {
+    background-color: rebeccapurple;
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul {
+    padding: 0;
+    margin: 0;
+}
+
+nav ul>li {
+    display: inline-flex;
+    padding: 0 1em;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+}
+
+nav a:hover, nav a:active, nav a.active {
+    color: limegreen;
+}
+
+main {
+    padding: 1rem;
+}
