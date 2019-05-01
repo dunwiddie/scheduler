@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{ pageTitle }}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css" />
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body>
+    <header>
+        Header
+        <nav>
+            <ul>
+                <li><a href="#">Link A</a></li>
+                <li><a href="#">Link B</a></li>
+                <li><a href="#">Link C</a></li>
+                <li><a href="#">Link D</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <form action="/add-event" method="POST">
+            <input type="text" name="title">
+            <button type="submit">Add Event</button>
+        </form>
+        {{#if hasEvents}}
+        <div>
+            <h1>Events</h1>
+            {{#each events}}
+            <div>
+                <h2>{{ this.title }}</h2>
+                <p>{{this.id}}</p>
+            </div>
+            {{/each}}
+        </div>
+        {{else}}
+        <div>
+            <h1>No Events</h1>
+        </div>
+        {{/if}}
+    </main>
+    <footer>
+        <hr>
+        &copy; {{{ Year }}} by Derek Dunwiddie. All rights reserved.
+    </footer>
+</body>
+
+</html>

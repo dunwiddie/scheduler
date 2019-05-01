@@ -1,5 +1,5 @@
 const express = require('express');
-const exphbs = require('express-handlebars');
+//const ejs = require('ejs');
 const path = require('path');
 const bodyParser = require("body-parser");
 
@@ -20,8 +20,8 @@ const events = [
     { "id": 3, "name": "defaultEvent3" }
 ];
 
-app.engine('.hbs', exphbs({ defaultLayout: "main", extname: '.hbs' }));
-app.set('view engine', '.hbs')
+app.set('view engine', 'ejs');
+app.set('views', 'views');
 
 // Routes
 app.use(apiRouter);
@@ -43,7 +43,7 @@ app.use('/add-event', (req, res, next) => {
 })
 
 app.use('/', (req, res, next) => {
-    res.status(404).send("Sorry. There doesn't seem to be anything there")
+    res.status(404).render('404', { "pageTitle": "Page not found." });
 });
 
 // Listener

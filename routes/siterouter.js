@@ -7,7 +7,7 @@ const router = express.Router();
 
 
 router.get('/', (req, res) => {
-    res.render('home');
+    res.render('home', { "pageTitle": "Scheduler" });
 });
 
 router.get('/about', (req, res) => {
@@ -15,7 +15,17 @@ router.get('/about', (req, res) => {
 });
 
 router.get('/calendar', (req, res) => {
-    res.sendFile(path.join(rootDir, 'views', 'calendar.html'));
+    const calEvents = [
+        {
+            "id": 0,
+            "title": "event1"
+        },
+        {
+            "id": 1,
+            "title": "event2"
+        }
+    ];
+    res.render('calendar', { pageTitle: "Calendar", events: calEvents, hasEvents: calEvents.length > 0 });
 })
 
 module.exports = router;
