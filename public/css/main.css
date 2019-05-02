@@ -1,39 +1,49 @@
 body {
-    font-family: sans-serif;
+	font-family: sans-serif;
+	width: 100%;
 }
 
 header {
-    width: 100%;
-    background-color: rebeccapurple;
-    color: white;
+	background-color: rebeccapurple;
+	color: white;
+	padding: 1em;
 }
 
 nav {
-    background-color: rebeccapurple;
-    color: white;
-    display: flex;
-    justify-content: center;
+	background-color: rebeccapurple;
+	color: white;
+	display: flex;
+	justify-content: center;
 }
 
 nav ul {
-    padding: 0;
-    margin: 0;
+	padding: 0;
+	margin: 0;
 }
 
-nav ul>li {
-    display: inline-flex;
-    padding: 0 1em;
+nav ul > li {
+	display: inline-flex;
+	padding: 0 1em;
 }
 
 nav a {
-    text-decoration: none;
-    color: white;
+	text-decoration: none;
+	color: white;
 }
 
-nav a:hover, nav a:active, nav a.active {
-    color: limegreen;
+nav a:hover,
+nav a:active,
+nav a.active {
+	color: limegreen;
 }
 
 main {
-    padding: 1rem;
+	padding: 1rem;
+}
+
+footer {
+	position: absolute;
+	width: 100%;
+	bottom: 0px;
+	padding: 1em 0;
 }

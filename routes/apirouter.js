@@ -1,4 +1,4 @@
-const express = require("express");
+const express = require('express');
 
 const router = express.Router();
 
@@ -7,66 +7,74 @@ router.get('/api/calendar', (req, res) => {
 });
 
 router.post('/api/calendar', (req, res) => {
-
-    //validate the request
+    // validate the request
     if (!req.body.name || req.body.name.length < 3) {
-        res.status(400).send(`New events must include a name longer than 3 characters.`);
-        return;
+    res
+      .status(400)
+      .send("New events must include a name longer than 3 characters.");
+
+    return;
     }
 
-    const event = {
-        "id": events.length + 1,
-        "name": req.body.name
-    };
-    events.push(event);
+  const event = {
+    "id": events.length + 1,
+    name: req.body.name
+  };
 
-    res.send(event);
-})
+  events.push(event);
+
+  res.send(event);
+});
 
 router.get('/api/calendar/:id', (req, res) => {
+  // 404 if no event with :id is found
+  const event = events.find(e => e.id === parseInt(req.params.id));
 
-    // 404 if no event with :id is found
-    const event = events.find(e => e.id === parseInt(req.params.id));
-    if (!event) {
+  if (!event) {
         res.status(404).send(`No event with id ${req.params.id} was found.`);
+
         return;
-    }
+  }
 
     res.send(event);
 });
 
 router.put('/api/calendar/:id', (req, res) => {
-
-    // 404 if no event with :id is found
+  // 404 if no event with :id is found
     const event = events.find(e => e.id === parseInt(req.params.id));
-    if (!event) {
-        res.status(404).send(`No event with id ${req.params.id} was found.`);
-        return;
-    }
 
-    // validate the request
-    if (!req.body.name || req.body.name.length < 3) {
-        res.status(400).send(`Events must include a name longer than 3 characters.`);
+  if (!event) {
+    res.status(404).send(`No event with id ${req.params.id} was found.`);
         return;
+  }
+
+  // validate the request
+    if (!req.body.name || req.body.name.length < 3) {
+    res
+      .status(400)
+      .send("Events must include a name longer than 3 characters.");
+
+    return;
     }
     event.name = req.body.name;
 
-    res.send(event);
-})
+  res.send(event);
+});
 
 router.delete('/api/calendar/:id', (req, res) => {
-
     // 404 if no event with :id is found
-    const event = events.find(e => e.id === parseInt(req.params.id));
-    if (!event) {
+  const event = events.find(e => e.id === parseInt(req.params.id));
+
+  if (!event) {
         res.status(404).send(`No event with id ${req.params.id} was found.`);
         return;
     }
 
     const index = events.indexOf(event);
+
     events.splice(index, 1);
 
     res.send(event);
-})
+});
 
 module.exports = router;

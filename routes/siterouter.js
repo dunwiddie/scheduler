@@ -1,31 +1,19 @@
-const express = require("express");
-const path = require('path');
+const express = require('express');
 
-const rootDir = require("../utils/path");
+const eventsController = require('../controllers/events');
 
 const router = express.Router();
 
-
 router.get('/', (req, res) => {
-    res.render('home', { "pageTitle": "Scheduler" });
+  res.render("home", { pageTitle: "Scheduler" });
 });
 
 router.get('/about', (req, res) => {
-    res.send('About page');
+  res.render("about", { pageTitle: "About Scheduler" });
 });
 
-router.get('/calendar', (req, res) => {
-    const calEvents = [
-        {
-            "id": 0,
-            "title": "event1"
-        },
-        {
-            "id": 1,
-            "title": "event2"
-        }
-    ];
-    res.render('calendar', { pageTitle: "Calendar", events: calEvents, hasEvents: calEvents.length > 0 });
-})
+router.get('/calendar', eventsController.getAddEvent);
+
+router.post('/calendar', eventsController.postAddEvent);
 
 module.exports = router;

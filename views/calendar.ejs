@@ -1,8 +1,8 @@
 <%- include('includes/head.ejs') %>
 <%- include('includes/header.ejs') %>
 <main>
-    <form action="/add-event" method="POST">
-        <input type="text" name="title">
+    <form action="/calendar" method="POST">
+        <input type="text" name="eventName">
         <button type="submit">Add Event</button>
     </form>
     <% if (events.length > 0) { %>
@@ -10,7 +10,7 @@
         <h1>Events</h1>
         <% for (let event of events) { %>
         <div>
-            <h2><%= event.title %></h2>
+            <h2><%= event.name %></h2>
             <p><%= event.id %></p>
         </div>
         <% } %>
